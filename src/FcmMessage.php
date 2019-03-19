@@ -1,14 +1,18 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel;
 
-use Illuminate\Contracts\Support\Arrayable;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
 use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
+use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
 use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
+use Illuminate\Contracts\Support\Arrayable;
 
+/**
+ * Class FcmMessage
+ * @package AvtoDev\FirebaseNotificationsChannel
+ */
 class FcmMessage implements Arrayable
 {
     /**
@@ -58,7 +62,7 @@ class FcmMessage implements Arrayable
     {
         $this->android = new AndroidFcmPlatformSettings;
         $this->webpush = new WebpushFcmPlatformSettings;
-        $this->apns    = new AppleFcmPlatformSettings;
+        $this->apns = new AppleFcmPlatformSettings;
     }
 
     /**
@@ -175,14 +179,14 @@ class FcmMessage implements Arrayable
     public function toArray(): array
     {
         return [
-            'data'         => $this->data,
+            'data' => $this->data,
             'notification' => [
                 'title' => $this->title,
-                'body'  => $this->body,
+                'body' => $this->body,
             ],
-            'android'      => $this->android->toArray(),
-            'webpush'      => $this->webpush->toArray(),
-            'apns'         => $this->apns->toArray(),
+            'android' => $this->android->toArray(),
+            'webpush' => $this->webpush->toArray(),
+            'apns' => $this->apns->toArray(),
         ];
     }
 }

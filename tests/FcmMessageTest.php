@@ -2,13 +2,13 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests;
 
+use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
+use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
+use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
+use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use Illuminate\Contracts\Support\Arrayable;
-use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
 
 /**
  * Class FcmMessageTest.
@@ -25,14 +25,17 @@ class FcmMessageTest extends AbstractTestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->fcm_message = new FcmMessage;
     }
 
-    public function dataProvider()
+    /**
+     * @return array
+     */
+    public function dataProvider(): array
     {
         return [
             ['data', ['key' => 'value']],
@@ -54,7 +57,7 @@ class FcmMessageTest extends AbstractTestCase
      *
      * @dataProvider dataProvider
      */
-    public function testSetters($property, $value, $path = null)
+    public function testSetters($property, $value, $path = null): void
     {
         $this->fcm_message->{'set' . Str::title($property)}($value);
 

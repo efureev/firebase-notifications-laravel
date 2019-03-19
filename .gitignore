@@ -20,3 +20,4 @@ clover-file
 .DS_Store
 .php_cs.cache
 /storage
+.phpunit.result.cache

@@ -1,12 +1,12 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel;
 
-use Illuminate\Notifications\Notification;
 use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use Illuminate\Notifications\Notification;
 
 /**
  * Channel to send message to Firebase cloud message.
@@ -31,20 +31,20 @@ class FcmChannel
     /**
      * Send the given notification.
      *
-     * @param mixed                                  $notifiable
+     * @param mixed $notifiable
      * @param \Illuminate\Notifications\Notification $notification
      *
      * @throws CouldNotSendNotification
      */
-    public function send($notifiable, Notification $notification)
+    public function send($notifiable, Notification $notification): void
     {
         $route_notification_for_fcm = $notifiable->routeNotificationFor('fcm', $notification);
 
-        if (! ($route_notification_for_fcm instanceof FcmNotificationReceiverInterface)) {
+        if (!($route_notification_for_fcm instanceof FcmNotificationReceiverInterface)) {
             return;
         }
 
-        if (! \method_exists($notification, $method_name = 'toFcm')) {
+        if (!\method_exists($notification, $method_name = 'toFcm')) {
             throw CouldNotSendNotification::invalidNotification();
         }
 
@@ -54,7 +54,7 @@ class FcmChannel
         );
 
         if ($response->getStatusCode() !== 200) {
-            throw new CouldNotSendNotification((string) $response->getBody());
+            throw new CouldNotSendNotification((string)$response->getBody());
         }
     }
 }

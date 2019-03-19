@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel\PlatformSettings;
 
@@ -14,8 +14,8 @@ class AndroidFcmPlatformSettings implements Arrayable
     /**
      * Priority settings.
      */
-    const PRIORITY_HIGH   = 'HIGH';
-    const PRIORITY_NORMAL = 'NORMAL';
+    protected const PRIORITY_HIGH = 'HIGH';
+    protected const PRIORITY_NORMAL = 'NORMAL';
 
     /**
      * An identifier of a group of messages that can be collapsed,
@@ -160,7 +160,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $collapse_key
      */
-    public function setCollapseKey(string $collapse_key)
+    public function setCollapseKey(string $collapse_key): void
     {
         $this->collapse_key = $collapse_key;
     }
@@ -170,7 +170,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $priority
      */
-    public function setPriority(string $priority)
+    public function setPriority(string $priority): void
     {
         $this->priority = $priority;
     }
@@ -180,7 +180,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $ttl
      */
-    public function setTtl(string $ttl)
+    public function setTtl(string $ttl): void
     {
         $this->ttl = $ttl;
     }
@@ -190,7 +190,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $restricted_package_name
      */
-    public function setRestrictedPackageName(string $restricted_package_name)
+    public function setRestrictedPackageName(string $restricted_package_name): void
     {
         $this->restricted_package_name = $restricted_package_name;
     }
@@ -201,7 +201,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param array $data
      */
-    public function setData(array $data)
+    public function setData(array $data): void
     {
         $this->data = $data;
     }
@@ -221,7 +221,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $body
      */
-    public function setBody(string $body)
+    public function setBody(string $body): void
     {
         $this->body = $body;
     }
@@ -233,7 +233,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $icon
      */
-    public function setIcon(string $icon)
+    public function setIcon(string $icon): void
     {
         $this->icon = $icon;
     }
@@ -243,7 +243,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $color
      */
-    public function setColor(string $color)
+    public function setColor(string $color): void
     {
         $this->color = $color;
     }
@@ -255,7 +255,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $sound
      */
-    public function setSound(string $sound)
+    public function setSound(string $sound): void
     {
         $this->sound = $sound;
     }
@@ -268,7 +268,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $tag
      */
-    public function setTag(string $tag)
+    public function setTag(string $tag): void
     {
         $this->tag = $tag;
     }
@@ -279,7 +279,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $click_action
      */
-    public function setClickAction(string $click_action)
+    public function setClickAction(string $click_action): void
     {
         $this->click_action = $click_action;
     }
@@ -290,7 +290,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $body_loc_key
      */
-    public function setBodyLocKey(string $body_loc_key)
+    public function setBodyLocKey(string $body_loc_key): void
     {
         $this->body_loc_key = $body_loc_key;
     }
@@ -301,7 +301,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string[] $body_loc_args
      */
-    public function setBodyLocArgs(array $body_loc_args)
+    public function setBodyLocArgs(array $body_loc_args): void
     {
         $this->body_loc_args = $body_loc_args;
     }
@@ -312,7 +312,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $title_loc_key
      */
-    public function setTitleLocKey(string $title_loc_key)
+    public function setTitleLocKey(string $title_loc_key): void
     {
         $this->title_loc_key = $title_loc_key;
     }
@@ -323,7 +323,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string[] $title_loc_args
      */
-    public function setTitleLocArgs(array $title_loc_args)
+    public function setTitleLocArgs(array $title_loc_args): void
     {
         $this->title_loc_args = $title_loc_args;
     }
@@ -348,24 +348,24 @@ class AndroidFcmPlatformSettings implements Arrayable
     public function toArray(): array
     {
         return [
-            'collapse_key'            => $this->collapse_key,
-            'priority'                => $this->priority,
-            'ttl'                     => $this->ttl,
+            'collapse_key' => $this->collapse_key,
+            'priority' => $this->priority,
+            'ttl' => $this->ttl,
             'restricted_package_name' => $this->restricted_package_name,
-            'data'                    => $this->data,
-            'notification'            => [
-                'title'          => $this->title,
-                'body'           => $this->body,
-                'icon'           => $this->icon,
-                'color'          => $this->color,
-                'sound'          => $this->sound,
-                'tag'            => $this->tag,
-                'click_action'   => $this->click_action,
-                'body_loc_key'   => $this->body_loc_key,
-                'body_loc_args'  => $this->body_loc_args,
-                'title_loc_key'  => $this->title_loc_key,
+            'data' => $this->data,
+            'notification' => [
+                'title' => $this->title,
+                'body' => $this->body,
+                'icon' => $this->icon,
+                'color' => $this->color,
+                'sound' => $this->sound,
+                'tag' => $this->tag,
+                'click_action' => $this->click_action,
+                'body_loc_key' => $this->body_loc_key,
+                'body_loc_args' => $this->body_loc_args,
+                'title_loc_key' => $this->title_loc_key,
                 'title_loc_args' => $this->title_loc_args,
-                'channel_id'     => $this->channel_id,
+                'channel_id' => $this->channel_id,
             ],
         ];
     }

@@ -6,13 +6,10 @@
 
 # FirebaseNotificationsChannel for Laravel applications
 
-[![Version][badge_packagist_version]][link_packagist]
-[![Version][badge_php_version]][link_packagist]
 [![Build Status][badge_build_status]][link_build_status]
-[![Coverage][badge_coverage]][link_coverage]
-[![Code quality][badge_code_quality]][link_code_quality]
-[![Downloads count][badge_downloads_count]][link_packagist]
-[![License][badge_license]][link_license]
+[![codecov](https://codecov.io/gh/efureev/firebase-notifications-laravel/branch/master/graph/badge.svg)][link_coverage]
+
+
 
 This package makes it easy to send notifications using [Firebase][firebase_home] with Laravel 5.
 
@@ -33,7 +30,7 @@ This package makes it easy to send notifications using [Firebase][firebase_home]
 ## Installation
 
 ```bash
-$ composer require avto-dev/firebase-notifications-laravel "^1.0"
+$ composer require feugene/firebase-notifications-laravel "^2.0"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
@@ -64,7 +61,7 @@ If you wants to disable package service-provider auto discover, just add into yo
     "extra": {
         "laravel": {
             "dont-discover": [
-                "avto-dev/firebase-notifications-laravel"
+                "feugene/firebase-notifications-laravel"
             ]
         }
     }
@@ -228,7 +225,7 @@ Field     | Type
 For package testing we use `phpunit` framework. Just write into your terminal _(installed `docker-ce` is required)_:
 
 ``` bash
-$ git clone git@github.com:avto-dev/firebase-notifications-laravel.git ./firebase-notifications-laravel && cd $_
+$ git clone git@github.com:efureev/firebase-notifications-laravel.git ./firebase-notifications-laravel && cd $_
 $ make install
 $ make test
 ```
@@ -261,29 +258,29 @@ If you discover any security related issues, please email `jetexe2@gmail.com` in
 
 This is open-sourced software licensed under the [MIT License][link_license].
 
-[badge_packagist_version]:https://img.shields.io/packagist/v/avto-dev/firebase-notifications-laravel.svg?maxAge=180
-[badge_php_version]:https://img.shields.io/packagist/php-v/avto-dev/firebase-notifications-laravel.svg?longCache=true
-[badge_build_status]:https://travis-ci.org/avto-dev/firebase-notifications-laravel.svg?branch=master
-[badge_code_quality]:https://img.shields.io/scrutinizer/g/avto-dev/firebase-notifications-laravel.svg?maxAge=180
-[badge_coverage]:https://img.shields.io/codecov/c/github/avto-dev/firebase-notifications-laravel/master.svg?maxAge=60
-[badge_downloads_count]:https://img.shields.io/packagist/dt/avto-dev/firebase-notifications-laravel.svg?maxAge=180
-[badge_license]:https://img.shields.io/packagist/l/avto-dev/firebase-notifications-laravel.svg?longCache=true
-[badge_release_date]:https://img.shields.io/github/release-date/avto-dev/firebase-notifications-laravel.svg?style=flat-square&maxAge=180
-[badge_commits_since_release]:https://img.shields.io/github/commits-since/avto-dev/firebase-notifications-laravel/latest.svg?style=flat-square&maxAge=180
-[badge_issues]:https://img.shields.io/github/issues/avto-dev/firebase-notifications-laravel.svg?style=flat-square&maxAge=180
-[badge_pulls]:https://img.shields.io/github/issues-pr/avto-dev/firebase-notifications-laravel.svg?style=flat-square&maxAge=180
+[badge_packagist_version]:https://img.shields.io/packagist/v/efureev/firebase-notifications-laravel.svg?maxAge=180
+[badge_php_version]:https://img.shields.io/packagist/php-v/feugene/firebase-notifications-laravel.svg?longCache=true
+[badge_build_status]:https://travis-ci.org/efureev/firebase-notifications-laravel.svg?branch=master
+[badge_code_quality]:https://img.shields.io/scrutinizer/g/efureev/firebase-notifications-laravel.svg?maxAge=180
+[badge_coverage]:https://img.shields.io/codecov/c/github/efureev/firebase-notifications-laravel/master.svg?maxAge=60
+[badge_downloads_count]:https://img.shields.io/packagist/dt/efureev/firebase-notifications-laravel.svg?maxAge=180
+[badge_license]:https://img.shields.io/packagist/l/efureev/firebase-notifications-laravel.svg?longCache=true
+[badge_release_date]:https://img.shields.io/github/release-date/efureev/firebase-notifications-laravel.svg?style=flat-square&maxAge=180
+[badge_commits_since_release]:https://img.shields.io/github/commits-since/efureev/firebase-notifications-laravel/latest.svg?style=flat-square&maxAge=180
+[badge_issues]:https://img.shields.io/github/issues/efureev/firebase-notifications-laravel.svg?style=flat-square&maxAge=180
+[badge_pulls]:https://img.shields.io/github/issues-pr/efureev/firebase-notifications-laravel.svg?style=flat-square&maxAge=180
 
-[link_releases]:https://github.com/avto-dev/firebase-notifications-laravel/releases
-[link_packagist]:https://packagist.org/packages/avto-dev/firebase-notifications-laravel
-[link_build_status]:https://travis-ci.org/avto-dev/firebase-notifications-laravel
-[link_coverage]:https://codecov.io/gh/avto-dev/firebase-notifications-laravel/
-[link_changes_log]:https://github.com/avto-dev/firebase-notifications-laravel/blob/master/CHANGELOG.md
-[link_code_quality]:https://scrutinizer-ci.com/g/avto-dev/firebase-notifications-laravel/
-[link_issues]:https://github.com/avto-dev/firebase-notifications-laravel/issues
-[link_create_issue]:https://github.com/avto-dev/firebase-notifications-laravel/issues/new/choose
-[link_commits]:https://github.com/avto-dev/firebase-notifications-laravel/commits
-[link_pulls]:https://github.com/avto-dev/firebase-notifications-laravel/pulls
-[link_license]:https://github.com/avto-dev/firebase-notifications-laravel/blob/master/LICENSE
+[link_releases]:https://github.com/efureev/firebase-notifications-laravel/releases
+[link_packagist]:https://packagist.org/packages/efureev/firebase-notifications-laravel
+[link_build_status]:https://travis-ci.org/efureev/firebase-notifications-laravel
+[link_coverage]:https://codecov.io/gh/efureev/firebase-notifications-laravel/
+[link_changes_log]:https://github.com/efureev/firebase-notifications-laravel/blob/master/CHANGELOG.md
+[link_code_quality]:https://scrutinizer-ci.com/g/efureev/firebase-notifications-laravel/
+[link_issues]:https://github.com/efureev/firebase-notifications-laravel/issues
+[link_create_issue]:https://github.com/efureev/firebase-notifications-laravel/issues/new/choose
+[link_commits]:https://github.com/efureev/firebase-notifications-laravel/commits
+[link_pulls]:https://github.com/efureev/firebase-notifications-laravel/pulls
+[link_license]:https://github.com/efureev/firebase-notifications-laravel/blob/master/LICENSE
 [getcomposer]:https://getcomposer.org/download/
 
 [firebase_home]:https://firebase.google.com/

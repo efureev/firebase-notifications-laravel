@@ -2,17 +2,17 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests;
 
+use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use AvtoDev\FirebaseNotificationsChannel\FcmChannel;
+use AvtoDev\FirebaseNotificationsChannel\FcmClient;
+use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
+use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
 use GuzzleHttp\Client;
-use GuzzleHttp\Middleware;
 use GuzzleHttp\HandlerStack;
+use GuzzleHttp\Middleware;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
-use AvtoDev\FirebaseNotificationsChannel\FcmClient;
-use AvtoDev\FirebaseNotificationsChannel\FcmChannel;
-use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
 
 /**
  * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\FcmChannel
@@ -27,7 +27,7 @@ class FcmChannelTest extends AbstractTestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->firebase_channel = $this->app->make(FcmChannel::class);
@@ -39,7 +39,7 @@ class FcmChannelTest extends AbstractTestCase
      * @throws \ReflectionException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testConstruct()
+    public function testConstruct(): void
     {
         self::assertInstanceOf(FcmClient::class, self::getProperty($this->firebase_channel, 'fcm_client'));
     }
@@ -49,10 +49,10 @@ class FcmChannelTest extends AbstractTestCase
      *
      * @covers ::send()
      *
-     * @throws \InvalidArgumentException
      * @throws CouldNotSendNotification
+     * @throws \ReflectionException
      */
-    public function testSendSuccess()
+    public function testSendSuccess(): void
     {
         $response = new Response(200, [], \json_encode(['message_id' => 'test']));
         $this->mock_handler->append($response);
@@ -66,8 +66,9 @@ class FcmChannelTest extends AbstractTestCase
      * @covers ::send()
      *
      * @throws CouldNotSendNotification
+     * @throws \ReflectionException
      */
-    public function testSendNoToFcm()
+    public function testSendNoToFcm(): void
     {
         $this->expectException(CouldNotSendNotification::class);
         $this->expectExceptionMessage('Can\'t convert notification to FCM message');
@@ -83,9 +84,9 @@ class FcmChannelTest extends AbstractTestCase
      * @covers ::send()
      *
      * @throws CouldNotSendNotification
-     * @throws \InvalidArgumentException
+     * @throws \ReflectionException
      */
-    public function testSendFailed()
+    public function testSendFailed(): void
     {
         $this->expectException(CouldNotSendNotification::class);
 
@@ -102,7 +103,7 @@ class FcmChannelTest extends AbstractTestCase
      * @throws \InvalidArgumentException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testNoSend()
+    public function testNoSend(): void
     {
         $history_container = [];
 
@@ -133,8 +134,9 @@ class FcmChannelTest extends AbstractTestCase
 
     /**
      * @return Notification
+     * @throws \ReflectionException
      */
-    protected function getNotificationMock()
+    protected function getNotificationMock(): Notification
     {
         $notification = $this
             ->getMockBuilder(Notification::class)
@@ -152,7 +154,8 @@ class FcmChannelTest extends AbstractTestCase
     }
 
     /**
-     * @return Notifiable
+     * @return \PHPUnit\Framework\MockObject\MockObject
+     * @throws \ReflectionException
      */
     protected function getNotifiableMock()
     {

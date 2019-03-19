@@ -1,9 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel\Receivers;
 
+/**
+ * Class FcmDeviceReceiver
+ * @package AvtoDev\FirebaseNotificationsChannel\Receivers
+ */
 class FcmDeviceReceiver implements FcmNotificationReceiverInterface
 {
     /**

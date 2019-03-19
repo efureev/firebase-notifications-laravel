@@ -2,11 +2,11 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\HandlerStack;
-use GuzzleHttp\Handler\MockHandler;
-use AvtoDev\FirebaseNotificationsChannel\FcmClient;
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
+use AvtoDev\FirebaseNotificationsChannel\FcmClient;
+use GuzzleHttp\Client;
+use GuzzleHttp\Handler\MockHandler;
+use GuzzleHttp\HandlerStack;
 
 abstract class AbstractTestCase extends AbstractLaravelTestCase
 {
@@ -15,7 +15,7 @@ abstract class AbstractTestCase extends AbstractLaravelTestCase
      */
     protected $mock_handler;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -33,7 +33,7 @@ abstract class AbstractTestCase extends AbstractLaravelTestCase
         });
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         \Mockery::close();
         parent::tearDown();

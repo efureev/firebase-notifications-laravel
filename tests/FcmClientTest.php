@@ -2,12 +2,12 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests;
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
 use AvtoDev\FirebaseNotificationsChannel\FcmClient;
 use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
-use SebastianBergmann\RecursionContext\InvalidArgumentException;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmDeviceReceiver;
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Response;
+use SebastianBergmann\RecursionContext\InvalidArgumentException;
 
 /**
  * Class FcmClientTest.
@@ -24,7 +24,7 @@ class FcmClientTest extends AbstractTestCase
     /**
      * {@inheritdoc}
      */
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
         $this->firebase_client = $this->app->make(FcmClient::class);
@@ -35,13 +35,13 @@ class FcmClientTest extends AbstractTestCase
      *
      * @throws \InvalidArgumentException
      */
-    public function testSendMessage()
+    public function testSendMessage(): void
     {
         $response = new Response(200, [], \json_encode(['message_id' => 'test']));
         $this->mock_handler->append($response);
 
         $r = $this->firebase_client->sendMessage(new FcmDeviceReceiver('test'), new FcmMessage);
-        static::assertJson((string) $r->getBody());
+        static::assertJson((string)$r->getBody());
     }
 
     /**
@@ -50,23 +50,23 @@ class FcmClientTest extends AbstractTestCase
      * @throws \ReflectionException
      * @throws InvalidArgumentException
      */
-    public function testFilterPayloadForRemoveEmptyValue()
+    public function testFilterPayloadForRemoveEmptyValue(): void
     {
         $unfiltered_payload = [
-            'foo'   => 'bar',
+            'foo' => 'bar',
             'array' => [
                 'foo' => 'bar',
             ],
         ];
 
         $values_to_remove = [
-            'array'       => [
+            'array' => [
                 'empty_value' => '',
-                'null_value'  => null,
+                'null_value' => null,
                 'empty_array' => [],
             ],
             'empty_value' => '',
-            'null_value'  => null,
+            'null_value' => null,
             'empty_array' => [],
         ];
 
@@ -86,11 +86,11 @@ class FcmClientTest extends AbstractTestCase
      * @throws \InvalidArgumentException
      * @throws \ReflectionException
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $http_client = new Client;
-        $endpoint    = 'test';
-        $client      = new FcmClient($http_client, $endpoint);
+        $endpoint = 'test';
+        $client = new FcmClient($http_client, $endpoint);
 
         static::assertEquals($endpoint, static::getProperty($client, 'endpoint'));
         static::assertEquals($http_client, static::getProperty($client, 'http_client'));

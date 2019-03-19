@@ -1,9 +1,13 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel\Receivers;
 
+/**
+ * Class FcmTopicReceiver
+ * @package AvtoDev\FirebaseNotificationsChannel\Receivers
+ */
 class FcmTopicReceiver implements FcmNotificationReceiverInterface
 {
     /**
@@ -16,7 +20,7 @@ class FcmTopicReceiver implements FcmNotificationReceiverInterface
      *
      * @param string $topic
      */
-    public function __construct($topic)
+    public function __construct(string $topic)
     {
         $this->topic = $topic;
     }
@@ -24,7 +28,7 @@ class FcmTopicReceiver implements FcmNotificationReceiverInterface
     /**
      * @return string
      */
-    public function getTopic()
+    public function getTopic(): string
     {
         return $this->topic;
     }

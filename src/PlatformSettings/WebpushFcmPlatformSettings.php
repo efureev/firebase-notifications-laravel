@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel\PlatformSettings;
 
@@ -137,7 +137,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param array $headers
      */
-    public function setHeaders(array $headers)
+    public function setHeaders(array $headers): void
     {
         $this->headers = $headers;
     }
@@ -147,7 +147,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param array $data
      */
-    public function setData(array $data)
+    public function setData(array $data): void
     {
         $this->data = $data;
     }
@@ -157,7 +157,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $link
      */
-    public function setLink(string $link)
+    public function setLink(string $link): void
     {
         $this->link = $link;
     }
@@ -167,7 +167,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $title
      */
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -177,7 +177,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $body
      */
-    public function setBody(string $body)
+    public function setBody(string $body): void
     {
         $this->body = $body;
     }
@@ -187,7 +187,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param array $value
      */
-    public function setActions(array $value)
+    public function setActions(array $value): void
     {
         $this->actions = $value;
     }
@@ -198,7 +198,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $value
      */
-    public function setBadge(string $value)
+    public function setBadge(string $value): void
     {
         $this->badge = $value;
     }
@@ -208,7 +208,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $value
      */
-    public function setDir(string $value)
+    public function setDir(string $value): void
     {
         $this->dir = $value;
     }
@@ -218,7 +218,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $value
      */
-    public function setLang(string $value)
+    public function setLang(string $value): void
     {
         $this->lang = $value;
     }
@@ -228,7 +228,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $value
      */
-    public function setTag(string $value)
+    public function setTag(string $value): void
     {
         $this->tag = $value;
     }
@@ -238,7 +238,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $value
      */
-    public function setIcon(string $value)
+    public function setIcon(string $value): void
     {
         $this->icon = $value;
     }
@@ -249,7 +249,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param string $value
      */
-    public function setImage(string $value)
+    public function setImage(string $value): void
     {
         $this->image = $value;
     }
@@ -259,7 +259,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param bool $value
      */
-    public function setRenotify(bool $value)
+    public function setRenotify(bool $value): void
     {
         $this->renotify = $value;
     }
@@ -270,7 +270,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param bool $value
      */
-    public function setRequireInteraction(bool $value)
+    public function setRequireInteraction(bool $value): void
     {
         $this->requireInteraction = $value;
     }
@@ -281,7 +281,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param bool $value
      */
-    public function setSilent(bool $value)
+    public function setSilent(bool $value): void
     {
         $this->silent = $value;
     }
@@ -291,7 +291,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param int $value
      */
-    public function setTimestamp(int $value)
+    public function setTimestamp(int $value): void
     {
         $this->timestamp = $value;
     }
@@ -301,7 +301,7 @@ class WebpushFcmPlatformSettings implements Arrayable
      *
      * @param bool $value
      */
-    public function setVibrate(bool $value)
+    public function setVibrate(bool $value): void
     {
         $this->vibrate = $value;
     }
@@ -314,26 +314,26 @@ class WebpushFcmPlatformSettings implements Arrayable
     public function toArray(): array
     {
         return [
-            'headers'      => $this->headers,
-            'data'         => $this->data,
+            'headers' => $this->headers,
+            'data' => $this->data,
             'notification' => [
-                'actions'            => $this->actions,
-                'badge'              => $this->badge,
-                'body'               => $this->body,
-                'data'               => $this->data,
-                'dir'                => $this->dir,
-                'lang'               => $this->lang,
-                'tag'                => $this->tag,
-                'icon'               => $this->icon,
-                'image'              => $this->image,
-                'renotify'           => $this->renotify,
+                'actions' => $this->actions,
+                'badge' => $this->badge,
+                'body' => $this->body,
+                'data' => $this->data,
+                'dir' => $this->dir,
+                'lang' => $this->lang,
+                'tag' => $this->tag,
+                'icon' => $this->icon,
+                'image' => $this->image,
+                'renotify' => $this->renotify,
                 'requireInteraction' => $this->requireInteraction,
-                'silent'             => $this->silent,
-                'timestamp'          => $this->timestamp,
-                'title'              => $this->title,
-                'vibrate'            => $this->vibrate,
+                'silent' => $this->silent,
+                'timestamp' => $this->timestamp,
+                'title' => $this->title,
+                'vibrate' => $this->vibrate,
             ],
-            'fcm_options'  => [
+            'fcm_options' => [
                 'link' => $this->link,
             ],
         ];

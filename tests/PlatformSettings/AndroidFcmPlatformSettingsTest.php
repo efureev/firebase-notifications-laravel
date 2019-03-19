@@ -3,6 +3,7 @@
 namespace AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings;
 
 use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
+use Illuminate\Contracts\Support\Arrayable;
 
 /**
  * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings
@@ -12,7 +13,7 @@ class AndroidFcmPlatformSettingsTest extends AbstractPlatformSettingsTest
     /**
      * @return array
      */
-    public function dataProvider()
+    public function dataProvider(): array
     {
         return [
             ['collapse_key', 'collapse_key', 'collapse_key_test'],
@@ -38,7 +39,7 @@ class AndroidFcmPlatformSettingsTest extends AbstractPlatformSettingsTest
     /**
      * {@inheritdoc}
      */
-    protected function getPlatformSetting()
+    protected function getPlatformSetting(): Arrayable
     {
         return new AndroidFcmPlatformSettings;
     }

@@ -2,8 +2,8 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests\Exceptions;
 
-use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 
 /**
  * Class CouldNotSendNotificationTest.
@@ -19,12 +19,12 @@ class CouldNotSendNotificationTest extends AbstractTestCase
      */
     public function testInvalidNotification()
     {
-        $this->assertInstanceOf(
+        static::assertInstanceOf(
             CouldNotSendNotification::class,
             CouldNotSendNotification::invalidNotification()
         );
 
-        $this->assertEquals(
+        static::assertEquals(
             'Can\'t convert notification to FCM message',
             CouldNotSendNotification::invalidNotification()->getMessage()
         );

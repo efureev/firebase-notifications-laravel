@@ -1,21 +1,25 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel;
 
 use GuzzleHttp\Client;
-use Tarampampam\Wrappers\Json;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\ServiceProvider;
 use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
+use Tarampampam\Wrappers\Json;
 
+/**
+ * Class FcmServiceProvider
+ * @package AvtoDev\FirebaseNotificationsChannel
+ */
 class FcmServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
         $this->app->when(FcmChannel::class)
             ->needs(FcmClient::class)
@@ -51,17 +55,17 @@ class FcmServiceProvider extends ServiceProvider
     protected function getCredentials(Application $app): array
     {
         /** @var \Illuminate\Config\Repository $config */
-        $config        = $app->make('config');
+        $config = $app->make('config');
         $config_driver = $config->get('services.fcm.driver');
 
         if ($config_driver === 'file') {
             $credentials_path = $config->get('services.fcm.drivers.file.path', '');
 
-            if (! \file_exists($credentials_path)) {
+            if (!\file_exists($credentials_path)) {
                 throw new \InvalidArgumentException('file does not exist');
             }
 
-            $credentials = Json::decode((string) \file_get_contents($credentials_path));
+            $credentials = Json::decode((string)\file_get_contents($credentials_path));
         } elseif ($config_driver === 'config') {
             $credentials = $config->get('services.fcm.drivers.config.credentials', []);
         } else {

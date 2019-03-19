@@ -19,7 +19,7 @@ class FcmDeviceReceiverTest extends AbstractReceiverTest
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testGetTarget()
+    public function testGetTarget(): void
     {
         static::assertEquals($this->target_value, $this->getReceiver()->getToken());
     }
@@ -29,7 +29,7 @@ class FcmDeviceReceiverTest extends AbstractReceiverTest
      *
      * @return FcmNotificationReceiverInterface|FcmDeviceReceiver
      */
-    protected function getReceiver()
+    protected function getReceiver(): FcmNotificationReceiverInterface
     {
         return new FcmDeviceReceiver($this->target_value);
     }

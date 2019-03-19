@@ -2,8 +2,8 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests\Receivers;
 
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
 
 /**
  * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver
@@ -19,7 +19,7 @@ class FcmTopicReceiverTest extends AbstractReceiverTest
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testGetTarget()
+    public function testGetTarget(): void
     {
         static::assertEquals($this->target_value, $this->getReceiver()->getTopic());
     }
@@ -27,7 +27,7 @@ class FcmTopicReceiverTest extends AbstractReceiverTest
     /**
      * @return FcmNotificationReceiverInterface|FcmTopicReceiver
      */
-    protected function getReceiver()
+    protected function getReceiver(): FcmNotificationReceiverInterface
     {
         return new FcmTopicReceiver($this->target_value);
     }

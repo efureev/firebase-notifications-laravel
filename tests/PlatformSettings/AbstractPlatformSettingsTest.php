@@ -2,16 +2,20 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings;
 
-use Illuminate\Support\Str;
-use Illuminate\Contracts\Support\Arrayable;
 use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Str;
 
+/**
+ * Class AbstractPlatformSettingsTest
+ * @package AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings
+ */
 abstract class AbstractPlatformSettingsTest extends AbstractTestCase
 {
     /**
      * @return array
      */
-    abstract public function dataProvider();
+    abstract public function dataProvider(): array;
 
     /**
      * @param $property
@@ -23,7 +27,7 @@ abstract class AbstractPlatformSettingsTest extends AbstractTestCase
      *
      * @dataProvider dataProvider
      */
-    public function testSetters($property, $array_path, $value)
+    public function testSetters($property, $array_path, $value): void
     {
         $platform_settings = $this->getPlatformSetting();
 
@@ -36,5 +40,5 @@ abstract class AbstractPlatformSettingsTest extends AbstractTestCase
     /**
      * @return Arrayable
      */
-    abstract protected function getPlatformSetting();
+    abstract protected function getPlatformSetting(): Arrayable;
 }

@@ -2,9 +2,13 @@
 
 namespace AvtoDev\FirebaseNotificationsChannel\Tests\Receivers;
 
-use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 
+/**
+ * Class AbstractReceiverTest
+ * @package AvtoDev\FirebaseNotificationsChannel\Tests\Receivers
+ */
 abstract class AbstractReceiverTest extends AbstractTestCase
 {
     protected $target_name;
@@ -17,7 +21,7 @@ abstract class AbstractReceiverTest extends AbstractTestCase
      * @throws \ReflectionException
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testGetConstruct()
+    public function testGetConstruct(): void
     {
         static::assertEquals($this->target_value, self::getProperty($this->getReceiver(), $this->target_name));
     }
@@ -27,7 +31,7 @@ abstract class AbstractReceiverTest extends AbstractTestCase
      *
      * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
-    public function testGetTargetArray()
+    public function testGetTargetArray(): void
     {
         static::assertEquals([$this->target_name => $this->target_value], $this->getReceiver()->getTarget());
     }
@@ -35,5 +39,5 @@ abstract class AbstractReceiverTest extends AbstractTestCase
     /**
      * @return FcmNotificationReceiverInterface
      */
-    abstract protected function getReceiver();
+    abstract protected function getReceiver(): FcmNotificationReceiverInterface;
 }
