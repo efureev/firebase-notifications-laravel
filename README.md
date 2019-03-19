@@ -7,9 +7,9 @@
 # FirebaseNotificationsChannel for Laravel applications
 
 [![Build Status][badge_build_status]][link_build_status]
-[![codecov](https://codecov.io/gh/efureev/firebase-notifications-laravel/branch/master/graph/badge.svg)][link_coverage]
-
-
+[![codecov](https://codecov.io/gh/efureev/firebase-notifications-laravel/branch/master/graph/badge.svg)](https://codecov.io/gh/efureev/firebase-notifications-laravel)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3b74ffa4382f96b0acd5/test_coverage)](https://codeclimate.com/github/efureev/firebase-notifications-laravel/test_coverage)
+[![Maintainability](https://api.codeclimate.com/v1/badges/3b74ffa4382f96b0acd5/maintainability)](https://codeclimate.com/github/efureev/firebase-notifications-laravel/maintainability)
 
 This package makes it easy to send notifications using [Firebase][firebase_home] with Laravel 5.
 
@@ -50,7 +50,7 @@ return [
         // ...
         AvtoDev\FirebaseNotificationsChannel\FcmServiceProvider::class,
     ],
-    
+
 ];
 ```
 
@@ -95,9 +95,9 @@ return [
     | Here you may specify some configs for FCM.
     |
     */
-    
+
     'fcm' => [
-    
+
         /*
          |----------------------------------------------------------------------
          | Firebase service driver
@@ -108,9 +108,9 @@ return [
          |   - Select `config` option to set up all section in config file
          |
          */
-         
+
         'driver' => env('FCM_DRIVER', 'config'),
-    
+
         /*
          |---------------------------------------------------------------------
          | FCM Drivers
@@ -119,25 +119,25 @@ return [
          | Here are each of the firebase.
          |
          */
-         
+
         'drivers' => [
-        
+
             'file' => [
                 'path' => env('FCM_FILE_PATH', base_path('storage/fcm.json')),
             ],
-            
+
             'config' => [
-            
+
                  /*
                  |------------------------------------------------------------
-                 | Credentials 
+                 | Credentials
                  |------------------------------------------------------------
                  |
-                 | Content of `firebase.json` file in config. Using if 
+                 | Content of `firebase.json` file in config. Using if
                  | `fcm.driver` is `config`. All fields required!
                  |
                  */
-                 
+
                 'credentials'=>[
                      'private_key_id'              => env('FCM_CREDENTIALS_PRIVATE_KEY_ID', 'da80b3bbceaa554442ad67e6be361a66'),
                      'private_key'                 => env('FCM_CREDENTIALS_PRIVATE_KEY', '-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n'),
@@ -151,7 +151,7 @@ return [
             ],
         ],    
     ],
-    
+
 ];
 ```
 
@@ -195,7 +195,7 @@ class SomeNotifible
 
     /**
     * Reveiver of firebase notification.
-    * 
+    *
     * @return FcmNotificationReceiverInterface
     */
     public function routeNotificationForFcm(): FcmNotificationReceiverInterface
