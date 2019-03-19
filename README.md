@@ -6,7 +6,7 @@
 
 # FirebaseNotificationsChannel for Laravel applications
 
-[![Build Status][badge_build_status]][link_build_status]
+[![Build Status](https://travis-ci.org/efureev/firebase-notifications-laravel.svg?branch=master)](https://travis-ci.org/efureev/firebase-notifications-laravel)
 [![codecov](https://codecov.io/gh/efureev/firebase-notifications-laravel/branch/master/graph/badge.svg)](https://codecov.io/gh/efureev/firebase-notifications-laravel)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3b74ffa4382f96b0acd5/test_coverage)](https://codeclimate.com/github/efureev/firebase-notifications-laravel/test_coverage)
 [![Maintainability](https://api.codeclimate.com/v1/badges/3b74ffa4382f96b0acd5/maintainability)](https://codeclimate.com/github/efureev/firebase-notifications-laravel/maintainability)
