@@ -173,11 +173,14 @@ class AccountApproved extends Notification
         return [FcmChannel::class];
     }
 
-    public function toFcm($notifiable, $notification)
+    /**
+     * @return FcmMessage
+     */
+    public function toFcm(): FcmMessage
     {
         return (new FcmMessage)
-            ->title('Approved!')
-            ->body('Your account was approved!');
+            ->setTitle('Approved!')
+            ->setBody('Your account was approved!');
     }
 }
 ```
