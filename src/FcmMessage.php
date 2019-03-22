@@ -180,7 +180,7 @@ class FcmMessage implements Arrayable
     public function toArray(): array
     {
         return [
-            'data' => $this->data,
+            'data' => static::toMap($this->data ?? []),
             'notification' => [
                 'title' => $this->title,
                 'body' => $this->body,
@@ -199,7 +199,7 @@ class FcmMessage implements Arrayable
      * @param array $array
      * @return array
      */
-    public static function toMap(array $array): array
+    protected static function toMap(array $array): array
     {
         return array_map(function ($i) {
             return (string)$i;

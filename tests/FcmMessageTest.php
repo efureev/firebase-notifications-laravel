@@ -38,7 +38,7 @@ class FcmMessageTest extends AbstractTestCase
     public function dataProvider(): array
     {
         return [
-            ['data', ['key' => 'value']],
+            ['data', ['key' => 'value', 'obj' => ['id' => 2, 'value' => ['test' => true]]]],
             ['title', 'title text', 'notification.title'],
             ['body', 'body text', 'notification.body'],
             ['android', new AndroidFcmPlatformSettings],
@@ -59,6 +59,11 @@ class FcmMessageTest extends AbstractTestCase
      */
     public function testSetters($property, $value, $path = null): void
     {
+        if ($property === 'data') {
+            $this->datumLine($property, $value);
+            return;
+        }
+
         $this->fcm_message->{'set' . Str::title($property)}($value);
 
         static::assertEquals($value, static::getProperty($this->fcm_message, $property));
@@ -73,5 +78,23 @@ class FcmMessageTest extends AbstractTestCase
         }
 
         static::assertEquals($value, Arr::get($this->fcm_message->toArray(), $path));
+    }
+
+    /**
+     * @param $property
+     * @param $value
+     * @throws \ReflectionException
+     */
+    public function datumLine($property, $value): void
+    {
+        $this->fcm_message->{'set' . Str::title($property)}($value);
+
+        static::assertJsonStringEqualsJsonString(\json_encode($value), \json_encode(static::getProperty($this->fcm_message, $property)));
+
+        static::assertEquals([
+            'key' => 'value',
+            'obj.id' => '2',
+            'obj.value.test' => '1'
+        ], $this->fcm_message->toArray()['data']);
     }
 }
