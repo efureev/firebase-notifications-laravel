@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel;
 
+use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseRequestException;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class FcmClient
@@ -43,18 +46,22 @@ class FcmClient
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function sendMessage(FcmNotificationReceiverInterface $receiver, FcmMessage $message)
+    public function sendMessage(FcmNotificationReceiverInterface $receiver, FcmMessage $message): ResponseInterface
     {
-        $message_payload = $this->filterPayload(\array_merge($receiver->getTarget(), $message->toArray()));
+        $message_payload = static::filterPayload(\array_merge($receiver->getTarget(), $message->toArray()));
 
-        return $this->http_client->post($this->endpoint, [
-            'json' => [
-                'message' => $message_payload,
-            ],
-        ]);
+        try {
+            return $this->http_client->post($this->endpoint, [
+                'json' => [
+                    'message' => $message_payload,
+                ],
+            ]);
+        } catch (RequestException $e) {
+            throw new FirebaseRequestException($e->getMessage(), $e->getRequest(), $e->getResponse(), $e->getPrevious(), $e->getHandlerContext());
+        }
     }
-
-    public function so()
+    /*
+    public function so(): void
     {
         [
             'private_key_id' => env('FCM_CREDENTIALS_private_key_id', 'da80b3bbceaa554442ad67e6be361a66'),
@@ -67,6 +74,7 @@ class FcmClient
             'client_x509_cert_url' => env('FCM_CREDENTIALS_client_x509_cert_url', 'https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-mwax6%40test.iam.gserviceaccount.com'),
         ];
     }
+    */
 
     /**
      * Unset all empty data from payload.
@@ -75,7 +83,7 @@ class FcmClient
      *
      * @return array
      */
-    protected function filterPayload(array $payload): array
+    protected static function filterPayload(array $payload): array
     {
         foreach ($payload as $key => $value) {
             if ($value === null || $value === '') {
@@ -83,7 +91,7 @@ class FcmClient
             }
 
             if (\is_array($value)) {
-                $value = $this->filterPayload($value);
+                $value = static::filterPayload($value);
                 $payload[$key] = $value;
             }
 

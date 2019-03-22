@@ -3,6 +3,7 @@
 namespace AvtoDev\FirebaseNotificationsChannel\Tests;
 
 use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseException;
 use AvtoDev\FirebaseNotificationsChannel\FcmChannel;
 use AvtoDev\FirebaseNotificationsChannel\FcmClient;
 use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
@@ -66,6 +67,7 @@ class FcmChannelTest extends AbstractTestCase
      * @covers ::send()
      *
      * @throws CouldNotSendNotification
+     * @throws FirebaseException
      * @throws \ReflectionException
      */
     public function testSendNoToFcm(): void
@@ -84,11 +86,12 @@ class FcmChannelTest extends AbstractTestCase
      * @covers ::send()
      *
      * @throws CouldNotSendNotification
+     * @throws FirebaseException
      * @throws \ReflectionException
      */
     public function testSendFailed(): void
     {
-        $this->expectException(CouldNotSendNotification::class);
+        $this->expectException(FirebaseException::class);
 
         $response = new Response(300, [], \json_encode(['message_id' => 'test']));
         $this->mock_handler->append($response);
@@ -100,8 +103,8 @@ class FcmChannelTest extends AbstractTestCase
      * @covers ::send()
      *
      * @throws CouldNotSendNotification
-     * @throws \InvalidArgumentException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
+     * @throws FirebaseException
+     * @throws \ReflectionException
      */
     public function testNoSend(): void
     {

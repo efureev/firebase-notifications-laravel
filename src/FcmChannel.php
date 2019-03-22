@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AvtoDev\FirebaseNotificationsChannel;
 
 use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseException;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
 use Illuminate\Notifications\Notification;
 
@@ -31,10 +32,10 @@ class FcmChannel
     /**
      * Send the given notification.
      *
-     * @param mixed $notifiable
-     * @param \Illuminate\Notifications\Notification $notification
-     *
+     * @param $notifiable
+     * @param Notification $notification
      * @throws CouldNotSendNotification
+     * @throws FirebaseException
      */
     public function send($notifiable, Notification $notification): void
     {
@@ -54,7 +55,7 @@ class FcmChannel
         );
 
         if ($response->getStatusCode() !== 200) {
-            throw new CouldNotSendNotification((string)$response->getBody());
+            throw new FirebaseException((string)$response->getBody());
         }
     }
 }

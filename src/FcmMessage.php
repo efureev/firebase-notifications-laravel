@@ -8,6 +8,7 @@ use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSett
 use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
 use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
 
 /**
  * Class FcmMessage
@@ -188,5 +189,20 @@ class FcmMessage implements Arrayable
             'webpush' => $this->webpush->toArray(),
             'apns' => $this->apns->toArray(),
         ];
+    }
+
+    /**
+     * Convert extra-params to string-map
+     *
+     * @see https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?authuser=0#androidconfig
+     *
+     * @param array $array
+     * @return array
+     */
+    public static function toMap(array $array): array
+    {
+        return array_map(function ($i) {
+            return (string)$i;
+        }, Arr::dot($array));
     }
 }
