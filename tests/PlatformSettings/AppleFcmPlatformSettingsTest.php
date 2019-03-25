@@ -34,6 +34,21 @@ class AppleFcmPlatformSettingsTest extends AbstractPlatformSettingsTest
     }
 
     /**
+     * @throws \ReflectionException
+     */
+    public function testMutableContent(): void
+    {
+        /** @var AppleFcmPlatformSettings $platform_settings */
+        $platform_settings = $this->getPlatformSetting();
+
+        static::assertNull(static::getProperty($platform_settings, 'mutable_content'));
+        $platform_settings->enableMutableContent();
+        static::assertTrue(static::getProperty($platform_settings, 'mutable_content'));
+        $platform_settings->disableMutableContent();
+        static::assertNull(static::getProperty($platform_settings, 'mutable_content'));
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function getPlatformSetting(): Arrayable

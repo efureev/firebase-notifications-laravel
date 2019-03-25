@@ -4,6 +4,7 @@ namespace AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings;
 
 use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
@@ -34,7 +35,7 @@ abstract class AbstractPlatformSettingsTest extends AbstractTestCase
         $platform_settings->{'set' . Str::camel($property)}($value);
 
         static::assertEquals($value, static::getProperty($platform_settings, $property));
-        static::assertEquals($value, array_get($platform_settings->toArray(), $array_path));
+        static::assertEquals($value, Arr::get($platform_settings->toArray(), $array_path));
     }
 
     /**

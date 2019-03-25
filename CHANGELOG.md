@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v2.0.3
+
+### Add
+- Add key `mutable-content` to Apple FCM Message
+
+## v2.0.2
+
+### Fixed
+- Convert extra-params to string-map
+
 ## v2.0.0
 
 ### Changed
@@ -15,13 +25,11 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 ## v1.0.1
 
 ### Fixed
-
 - Fixed config structure
 
 ## v1.0.0
 
 ### Added
-
 - Basic code
 
 [keepachangelog]:https://keepachangelog.com/en/1.0.0/

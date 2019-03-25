@@ -80,7 +80,6 @@ class FcmMessageTest extends AbstractTestCase
         static::assertEquals($value, Arr::get($this->fcm_message->toArray(), $path));
     }
 
-
     /**
      * @param $property
      * @param $value
