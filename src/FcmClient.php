@@ -10,6 +10,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
+use Tarampampam\Wrappers\Json;
 
 /**
  * Class FcmClient
@@ -47,23 +48,23 @@ class FcmClient
      *
      * @param FcmNotificationReceiverInterface $receiver
      * @param FcmMessage $message
-     *
      * @return ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException
      */
     public function sendMessage(FcmNotificationReceiverInterface $receiver, FcmMessage $message): ResponseInterface
     {
         $message_payload = static::filterPayload(\array_merge($receiver->getTarget(), $message->toArray()));
+        $jsonMesg = Json::encode([
+            'message' => $message_payload,
+        ]);
 
-        $this->lastRequest = new Request('POST', $this->endpoint);
+        $this->lastRequest = new Request('POST', $this->endpoint, [
+            'Content-Type' => 'application/json'
+        ], $jsonMesg);
 
         try {
-
-            return $this->http_client->send($this->lastRequest, [
-                'json' => [
-                    'message' => $message_payload,
-                ],
-            ]);
+            return $this->http_client->send($this->lastRequest);
         } catch (RequestException $e) {
             throw new FirebaseRequestException($e->getMessage(), $e->getRequest(), $e->getResponse(), $e->getPrevious(), $e->getHandlerContext());
         }

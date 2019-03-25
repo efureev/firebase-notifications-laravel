@@ -37,6 +37,7 @@ class FcmChannel
      * @throws CouldNotSendNotification
      * @throws FirebaseException
      * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException
      */
     public function send($notifiable, Notification $notification): void
     {

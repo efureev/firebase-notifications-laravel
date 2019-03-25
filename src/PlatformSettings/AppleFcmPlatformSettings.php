@@ -325,22 +325,24 @@ class AppleFcmPlatformSettings implements Arrayable
         return [
             'headers' => $this->headers,
             'payload' => [
-                'alert' => [
-                    'title' => $this->title,
-                    'body' => $this->body,
-                    'title-loc-key' => $this->title_loc_key,
-                    'title-loc-args' => $this->title_loc_args,
-                    'action-loc-key' => $this->action_loc_key,
-                    'loc-key' => $this->loc_key,
-                    'loc-args' => $this->loc_args,
-                    'launch-image' => $this->launch_image,
-                ],
-                'badge' => $this->badge,
-                'sound' => $this->sound,
-                'content-available' => $this->content_available,
-                'category' => $this->category,
-                'thread-id' => $this->thread_id,
-                'mutable-content' => $this->mutable_content,
+                'aps' => [
+                    'alert' => [
+                        'title' => $this->title,
+                        'body' => $this->body,
+                        'title-loc-key' => $this->title_loc_key,
+                        'title-loc-args' => $this->title_loc_args,
+                        'action-loc-key' => $this->action_loc_key,
+                        'loc-key' => $this->loc_key,
+                        'loc-args' => $this->loc_args,
+                        'launch-image' => $this->launch_image,
+                    ],
+                    'badge' => $this->badge,
+                    'sound' => $this->sound,
+                    'content-available' => $this->content_available,
+                    'category' => $this->category,
+                    'thread-id' => $this->thread_id,
+                    'mutable-content' => (int)$this->mutable_content,
+                ]
             ],
         ];
     }
