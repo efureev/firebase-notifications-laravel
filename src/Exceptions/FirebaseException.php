@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AvtoDev\FirebaseNotificationsChannel\Exceptions;
 
+use Illuminate\Contracts\Support\Arrayable;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -11,7 +12,7 @@ use Psr\Http\Message\ResponseInterface;
  * Class FirebaseException
  * @package AvtoDev\FirebaseNotificationsChannel\Exceptions
  */
-class FirebaseException extends \Exception
+class FirebaseException extends \Exception implements Arrayable
 {
     /** @var RequestInterface */
     private $request;
@@ -61,5 +62,37 @@ class FirebaseException extends \Exception
     public function hasResponse(): bool
     {
         return $this->response !== null;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        $response = !$this->hasResponse()
+            ? null
+            : [
+                'headers' => $this->getResponse()->getHeaders(),
+                'statusCode' => $this->getResponse()->getStatusCode(),
+                'body' => $this->getResponse()->getBody(),
+                'reason' => $this->getResponse()->getReasonPhrase(),
+            ];
+
+
+        return [
+            'error' => [
+                'message' => $this->getMessage(),
+                'code' => $this->getCode(),
+            ],
+            'request' => [
+                'body' => $this->getRequest()->getBody(),
+                'method' => $this->getRequest()->getMethod(),
+                'uri' => $this->getRequest()->getUri(),
+                'target' => $this->getRequest()->getRequestTarget(),
+                'headers' => $this->getRequest()->getHeaders(),
+            ],
+            'response' => $response,
+
+        ];
     }
 }
