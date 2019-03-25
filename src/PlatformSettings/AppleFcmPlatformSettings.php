@@ -299,11 +299,17 @@ class AppleFcmPlatformSettings implements Arrayable
         $this->launch_image = $launch_image;
     }
 
+    /**
+     * Enabled mutable_content
+     */
     public function enableMutableContent(): void
     {
         $this->mutable_content = true;
     }
 
+    /**
+     * Remove mutable_content
+     */
     public function disableMutableContent(): void
     {
         $this->mutable_content = null;
