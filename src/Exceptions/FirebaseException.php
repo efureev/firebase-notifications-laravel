@@ -74,7 +74,7 @@ class FirebaseException extends \Exception implements Arrayable
             : [
                 'headers' => $this->getResponse()->getHeaders(),
                 'statusCode' => $this->getResponse()->getStatusCode(),
-                'body' => $this->getResponse()->getBody(),
+                'body' => (string)$this->getResponse()->getBody(),
                 'reason' => $this->getResponse()->getReasonPhrase(),
             ];
 
@@ -85,7 +85,7 @@ class FirebaseException extends \Exception implements Arrayable
                 'code' => $this->getCode(),
             ],
             'request' => [
-                'body' => $this->getRequest()->getBody(),
+                'body' => (string)$this->getRequest()->getBody(),
                 'method' => $this->getRequest()->getMethod(),
                 'uri' => $this->getRequest()->getUri(),
                 'target' => $this->getRequest()->getRequestTarget(),
