@@ -32,10 +32,11 @@ class FcmChannel
     /**
      * Send the given notification.
      *
-     * @param $notifiable
+     * @param mixed $notifiable
      * @param Notification $notification
      * @throws CouldNotSendNotification
      * @throws FirebaseException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function send($notifiable, Notification $notification): void
     {
@@ -55,7 +56,7 @@ class FcmChannel
         );
 
         if ($response->getStatusCode() !== 200) {
-            throw new FirebaseException((string)$response->getBody());
+            throw new FirebaseException('Something went wrong', $this->fcm_client->lastRequest, $response);
         }
     }
 }

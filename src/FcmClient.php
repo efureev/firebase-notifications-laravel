@@ -8,6 +8,7 @@ use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseRequestException;
 use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Request;
 use Psr\Http\Message\ResponseInterface;
 
 /**
@@ -38,20 +39,27 @@ class FcmClient
         $this->endpoint = $endpoint;
     }
 
+    /** @var Request */
+    public $lastRequest;
+
     /**
      * Send message to firebase cloud messaging server.
      *
      * @param FcmNotificationReceiverInterface $receiver
      * @param FcmMessage $message
      *
-     * @return \Psr\Http\Message\ResponseInterface
+     * @return ResponseInterface
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function sendMessage(FcmNotificationReceiverInterface $receiver, FcmMessage $message): ResponseInterface
     {
         $message_payload = static::filterPayload(\array_merge($receiver->getTarget(), $message->toArray()));
 
+        $this->lastRequest = new Request('POST', $this->endpoint);
+
         try {
-            return $this->http_client->post($this->endpoint, [
+
+            return $this->http_client->send($this->lastRequest, [
                 'json' => [
                     'message' => $message_payload,
                 ],

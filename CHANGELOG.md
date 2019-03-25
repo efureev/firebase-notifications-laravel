@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v2.0.4
+
+### Changed
+- Add to FirebaseException new features: request (`Psr\Http\Message\RequestInterface`) and response (`Psr\Http\Message\ResponseInterface`) 
+
 ## v2.0.3
 
 ### Add
