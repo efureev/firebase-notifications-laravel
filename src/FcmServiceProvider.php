@@ -62,7 +62,7 @@ class FcmServiceProvider extends ServiceProvider
             $credentials_path = $config->get('services.fcm.drivers.file.path', '');
 
             if (!\file_exists($credentials_path)) {
-                throw new \InvalidArgumentException('file does not exist');
+                throw new \InvalidArgumentException('config file does not exist');
             }
 
             $credentials = Json::decode((string)\file_get_contents($credentials_path));
