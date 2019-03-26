@@ -133,6 +133,10 @@ class AppleFcmPlatformSettings implements Arrayable
 
 
     /**
+     * The notification service app extension flag. If the value is 1, the system passes the notification to your
+     * notification service app extension before delivery. Use your extension to modify the notification’s content.
+     * See Modifying Content in Newly Delivered Notifications.
+     *
      * @var ?bool
      */
     protected $mutable_content;
