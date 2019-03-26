@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog][keepachangelog] and this project adheres to [Semantic Versioning][semver].
 
+## v2.0.6
+
+### Fix
+- All bool extra-params will convert to int and next to string 
+
 ## v2.0.5
 
 ### Changed

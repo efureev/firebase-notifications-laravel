@@ -202,6 +202,10 @@ class FcmMessage implements Arrayable
     protected static function toMap(array $array): array
     {
         return array_map(function ($i) {
+            switch (gettype($i)) {
+                case 'boolean':
+                    return (string)(int)$i;
+            }
             return (string)$i;
         }, Arr::dot($array));
     }
