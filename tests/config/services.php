@@ -25,7 +25,7 @@ return [
          |   - Select `config` option to set up all section in config file
          |
          */
-
+        'server_key' => env('FIREBASE_SERVER_KEY'),
         'driver' => env('FCM_DRIVER', ''),
 
         /*

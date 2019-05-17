@@ -56,8 +56,8 @@
         }
     },
     "support": {
-        "issues": "https://github.com/avto-dev/firebase-notifications-laravel/issues",
-        "source": "https://github.com/avto-dev/firebase-notifications-laravel"
+        "issues": "https://github.com/efureev/firebase-notifications-laravel/issues",
+        "source": "https://github.com/efureev/firebase-notifications-laravel"
     },
     "config": {
         "sort-packages": true

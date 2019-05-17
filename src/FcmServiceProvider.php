@@ -38,6 +38,20 @@ class FcmServiceProvider extends ServiceProvider
                     'https://fcm.googleapis.com/v1/projects/' . $credentials['project_id'] . '/messages:send'
                 );
             });
+
+        $this->app
+            ->singleton('firebase', function (Application $app) {
+                $http_client = new Client([
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                        'Authorization' => 'key=' . config('services.fcm.server_key'),
+                    ],
+                ]);
+
+                return new FirebaseClient(
+                    $http_client
+                );
+            });
     }
 
     /**
@@ -45,10 +59,9 @@ class FcmServiceProvider extends ServiceProvider
      *
      * @param Application $app
      *
-     * @throws \InvalidArgumentException
-     * @throws \LogicException
-     *
      * @return array
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     * @throws \Php\Support\Exceptions\JsonException
      */
     protected function getCredentials(Application $app): array
     {
@@ -64,7 +77,7 @@ class FcmServiceProvider extends ServiceProvider
             }
 
             $credentials = Json::decode((string)\file_get_contents($credentials_path));
-        } elseif ($config_driver === 'config') {
+        } else if ($config_driver === 'config') {
             $credentials = $config->get('services.fcm.drivers.config.credentials', []);
         } else {
             throw new \InvalidArgumentException('Fcm driver not set');

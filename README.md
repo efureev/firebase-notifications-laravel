@@ -208,6 +208,29 @@ class SomeNotifible
 }
 ```
 
+Subscribe devices on topic
+```php
+<?php
+
+class PushTopicSendCommand extends Command
+{
+
+    public function handle(): void
+    {
+        $topicName = 'topic-name';
+
+        $resultList = app('firebase')->subscribe($topicName, [
+            "eKYl5MT4Ra8:APA91bHZXfYo....tGMs4UxJS9LI_V",
+            "eKY...UxJS9LI_F",
+        ]);
+
+        dd($resultList, app('firebase')->getLastResponse());
+
+
+    }
+}
+```
+
 ### Available Message methods
 
 This pakage supports all fields from [HTTP v1 FCM API][http_v1_fcm_api]. Message class contains setters for all the fields:
