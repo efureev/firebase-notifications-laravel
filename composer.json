@@ -51,7 +51,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AvtoDev\\FirebaseNotificationsChannel\\FcmServiceProvider"
+                "Feugene\\FirebaseNotificationsChannel\\FcmServiceProvider"
             ]
         }
     },
