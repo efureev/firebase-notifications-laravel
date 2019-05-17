@@ -10,8 +10,6 @@ The format is based on [Keep a Changelog][keepachangelog] and this project adher
 ### Added
 - Add `subscribe`/`unsubscribe` to topic
 
-## v2.1.0
-
 ### Changed
 - Changed namespace to `Feugene`
 
