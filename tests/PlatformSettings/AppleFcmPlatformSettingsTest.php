@@ -30,6 +30,7 @@ class AppleFcmPlatformSettingsTest extends AbstractPlatformSettingsTest
             ['content_available', 'payload.aps.content-available', 234],
             ['category', 'payload.aps.category', 'category_test'],
             ['thread_id', 'payload.aps.thread-id', 'thread_id_test'],
+            ['mutable_content', 'payload.aps.mutable-content', 1],
         ];
     }
 

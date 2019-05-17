@@ -54,7 +54,7 @@ class FcmChannel
 
         $response = $this->fcm_client->sendMessage(
             $route_notification_for_fcm,
-            $notification->{$method_name}()
+            $notification->{$method_name}($notifiable)
         );
 
         if ($response->getStatusCode() !== 200) {

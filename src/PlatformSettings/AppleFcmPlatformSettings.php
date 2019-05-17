@@ -133,9 +133,15 @@ class AppleFcmPlatformSettings implements Arrayable
 
 
     /**
+     * Allow to modify payload on iOS 10+ devices.
+     *
      * The notification service app extension flag. If the value is 1, the system passes the notification to your
      * notification service app extension before delivery. Use your extension to modify the notification’s content.
      * See Modifying Content in Newly Delivered Notifications.
+     *
+     * @see https://developer.apple.com/documentation/usernotifications/unnotificationserviceextension
+     *
+     * @var bool
      *
      * @var ?bool
      */
@@ -320,6 +326,14 @@ class AppleFcmPlatformSettings implements Arrayable
     }
 
     /**
+     * @param bool $mutable_content
+     */
+    public function setMutableContent(bool $mutable_content): void
+    {
+        $this->mutable_content = $mutable_content;
+    }
+
+    /**
      * Build an array.
      *
      * @return array
@@ -346,7 +360,7 @@ class AppleFcmPlatformSettings implements Arrayable
                     'category' => $this->category,
                     'thread-id' => $this->thread_id,
                     'mutable-content' => (int)$this->mutable_content,
-                ]
+                ],
             ],
         ];
     }
