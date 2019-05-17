@@ -2,17 +2,16 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel;
+namespace Feugene\FirebaseNotificationsChannel;
 
 use GuzzleHttp\Client;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
-use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
-use Tarampampam\Wrappers\Json;
+use Php\Support\Helpers\Json;
 
 /**
  * Class FcmServiceProvider
- * @package AvtoDev\FirebaseNotificationsChannel
+ * @package Feugene\FirebaseNotificationsChannel
  */
 class FcmServiceProvider extends ServiceProvider
 {
@@ -48,7 +47,6 @@ class FcmServiceProvider extends ServiceProvider
      *
      * @throws \InvalidArgumentException
      * @throws \LogicException
-     * @throws JsonEncodeDecodeException
      *
      * @return array
      */

@@ -30,7 +30,7 @@ This package makes it easy to send notifications using [Firebase][firebase_home]
 ## Installation
 
 ```bash
-$ composer require feugene/firebase-notifications-laravel "^2.0"
+$ composer require feugene/firebase-notifications-laravel "^2.1"
 ```
 
 > Installed `composer` is required ([how to install composer][getcomposer]).
@@ -48,7 +48,7 @@ return [
 
     'providers' => [
         // ...
-        AvtoDev\FirebaseNotificationsChannel\FcmServiceProvider::class,
+        Feugene\FirebaseNotificationsChannel\FcmServiceProvider::class,
     ],
 
 ];
@@ -163,8 +163,8 @@ Now you can use the channel in your `via()` method inside the notification as we
 <?php
 
 use Illuminate\Notifications\Notification;
-use AvtoDev\FirebaseNotificationsChannel\FcmChannel;
-use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
+use Feugene\FirebaseNotificationsChannel\FcmChannel;
+use Feugene\FirebaseNotificationsChannel\FcmMessage;
 
 class AccountApproved extends Notification
 {
@@ -189,8 +189,8 @@ class AccountApproved extends Notification
 <?php
 
 use Illuminate\Notifications\Notifiable;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmDeviceReceiver;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmDeviceReceiver;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
 
 class SomeNotifible
 {

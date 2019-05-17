@@ -1,14 +1,14 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests\Exceptions;
+namespace Feugene\FirebaseNotificationsChannel\Tests\Exceptions;
 
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
-use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
+use Feugene\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use Feugene\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 
 /**
  * Class CouldNotSendNotificationTest.
  *
- * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification
+ * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification
  */
 class CouldNotSendNotificationTest extends AbstractTestCase
 {

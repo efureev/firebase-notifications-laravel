@@ -4,6 +4,7 @@
     "keywords": [
         "firebase",
         "push",
+        "topic",
         "notifications"
     ],
     "type": "library",
@@ -22,7 +23,7 @@
         "guzzlehttp/guzzle": "~6.3",
         "illuminate/notifications": ">=5.8.0 < 5.9.0",
         "illuminate/support": ">=5.8.0 <5.9.0",
-        "tarampampam/wrappers-php": "^1.4"
+        "efureev/support": "2.0.*"
     },
     "require-dev": {
         "feugene/dev-tools": "^2.0",
@@ -34,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "AvtoDev\\FirebaseNotificationsChannel\\": "src"
+            "Feugene\\FirebaseNotificationsChannel\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "AvtoDev\\FirebaseNotificationsChannel\\Tests\\": "tests"
+            "Feugene\\FirebaseNotificationsChannel\\Tests\\": "tests"
         }
     },
     "scripts": {

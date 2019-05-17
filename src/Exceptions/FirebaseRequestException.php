@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel\Exceptions;
+namespace Feugene\FirebaseNotificationsChannel\Exceptions;
 
 use GuzzleHttp\Exception\RequestException;
 
 /**
  * Class FirebaseRequestException
- * @package AvtoDev\FirebaseNotificationsChannel\Exceptions
+ * @package Feugene\FirebaseNotificationsChannel\Exceptions
  */
 class FirebaseRequestException extends RequestException
 {

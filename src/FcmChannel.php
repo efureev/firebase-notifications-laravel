@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel;
+namespace Feugene\FirebaseNotificationsChannel;
 
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseException;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use Feugene\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use Feugene\FirebaseNotificationsChannel\Exceptions\FirebaseException;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
 use Illuminate\Notifications\Notification;
 
 /**
@@ -32,12 +32,13 @@ class FcmChannel
     /**
      * Send the given notification.
      *
-     * @param mixed $notifiable
+     * @param $notifiable
      * @param Notification $notification
+     *
      * @throws CouldNotSendNotification
      * @throws FirebaseException
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException
+     * @throws \Php\Support\Exceptions\JsonException
      */
     public function send($notifiable, Notification $notification): void
     {

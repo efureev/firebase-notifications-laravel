@@ -1,3 +1,3 @@
 <?php
 
-new AvtoDev\FirebaseNotificationsChannel\Tests\Bootstrapper\Bootstrapper;
+new Feugene\FirebaseNotificationsChannel\Tests\Bootstrapper\Bootstrapper;

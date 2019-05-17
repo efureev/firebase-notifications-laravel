@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel\Exceptions;
+namespace Feugene\FirebaseNotificationsChannel\Exceptions;
 
 /**
  * Class CouldNotSendNotification
- * @package AvtoDev\FirebaseNotificationsChannel\Exceptions
+ * @package Feugene\FirebaseNotificationsChannel\Exceptions
  */
 class CouldNotSendNotification extends \Exception
 {

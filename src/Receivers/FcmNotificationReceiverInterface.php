@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel\Receivers;
+namespace Feugene\FirebaseNotificationsChannel\Receivers;
 
 /**
  * Interface FcmNotificationReceiverInterface
- * @package AvtoDev\FirebaseNotificationsChannel\Receivers
+ * @package Feugene\FirebaseNotificationsChannel\Receivers
  */
 interface FcmNotificationReceiverInterface
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings;
+namespace Feugene\FirebaseNotificationsChannel\Tests\PlatformSettings;
 
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
 use Illuminate\Contracts\Support\Arrayable;
 
 /**
- * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings
+ * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings
  */
 class WebPushFcmPlatformSettingsTest extends AbstractPlatformSettingsTest
 {

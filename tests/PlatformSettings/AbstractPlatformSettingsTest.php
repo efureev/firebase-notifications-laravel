@@ -1,15 +1,15 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings;
+namespace Feugene\FirebaseNotificationsChannel\Tests\PlatformSettings;
 
-use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
+use Feugene\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 /**
  * Class AbstractPlatformSettingsTest
- * @package AvtoDev\FirebaseNotificationsChannel\Tests\PlatformSettings
+ * @package Feugene\FirebaseNotificationsChannel\Tests\PlatformSettings
  */
 abstract class AbstractPlatformSettingsTest extends AbstractTestCase
 {

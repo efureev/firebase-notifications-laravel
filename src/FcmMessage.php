@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel;
+namespace Feugene\FirebaseNotificationsChannel;
 
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 
 /**
  * Class FcmMessage
- * @package AvtoDev\FirebaseNotificationsChannel
+ * @package Feugene\FirebaseNotificationsChannel
  */
 class FcmMessage implements Arrayable
 {

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel\PlatformSettings;
+namespace Feugene\FirebaseNotificationsChannel\PlatformSettings;
 
 use Illuminate\Contracts\Support\Arrayable;
 

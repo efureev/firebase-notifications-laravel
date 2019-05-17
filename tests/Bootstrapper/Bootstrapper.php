@@ -1,13 +1,13 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests\Bootstrapper;
+namespace Feugene\FirebaseNotificationsChannel\Tests\Bootstrapper;
 
-use AvtoDev\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper;
-use AvtoDev\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
+use Feugene\DevTools\Tests\Bootstrap\AbstractLaravelTestsBootstrapper;
+use Feugene\DevTools\Tests\PHPUnit\Traits\CreatesApplicationTrait;
 
 /**
  * Class Bootstrapper
- * @package AvtoDev\FirebaseNotificationsChannel\Tests\Bootstrapper
+ * @package Feugene\FirebaseNotificationsChannel\Tests\Bootstrapper
  */
 class Bootstrapper extends AbstractLaravelTestsBootstrapper
 {

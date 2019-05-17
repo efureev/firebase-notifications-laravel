@@ -1,13 +1,13 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests;
+namespace Feugene\FirebaseNotificationsChannel\Tests;
 
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseException;
-use AvtoDev\FirebaseNotificationsChannel\FcmChannel;
-use AvtoDev\FirebaseNotificationsChannel\FcmClient;
-use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
+use Feugene\FirebaseNotificationsChannel\Exceptions\CouldNotSendNotification;
+use Feugene\FirebaseNotificationsChannel\Exceptions\FirebaseException;
+use Feugene\FirebaseNotificationsChannel\FcmChannel;
+use Feugene\FirebaseNotificationsChannel\FcmClient;
+use Feugene\FirebaseNotificationsChannel\FcmMessage;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
 use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Middleware;
@@ -16,7 +16,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 
 /**
- * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\FcmChannel
+ * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\FcmChannel
  */
 class FcmChannelTest extends AbstractTestCase
 {

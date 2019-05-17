@@ -1,13 +1,13 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests\Receivers;
+namespace Feugene\FirebaseNotificationsChannel\Tests\Receivers;
 
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
-use AvtoDev\FirebaseNotificationsChannel\Tests\AbstractTestCase;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use Feugene\FirebaseNotificationsChannel\Tests\AbstractTestCase;
 
 /**
  * Class AbstractReceiverTest
- * @package AvtoDev\FirebaseNotificationsChannel\Tests\Receivers
+ * @package Feugene\FirebaseNotificationsChannel\Tests\Receivers
  */
 abstract class AbstractReceiverTest extends AbstractTestCase
 {

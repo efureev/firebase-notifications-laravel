@@ -1,12 +1,12 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests\Receivers;
+namespace Feugene\FirebaseNotificationsChannel\Tests\Receivers;
 
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver;
 
 /**
- * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver
+ * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\Receivers\FcmTopicReceiver
  */
 class FcmTopicReceiverTest extends AbstractReceiverTest
 {

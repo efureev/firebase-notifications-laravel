@@ -1,11 +1,11 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests;
+namespace Feugene\FirebaseNotificationsChannel\Tests;
 
-use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
-use AvtoDev\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\FcmMessage;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\AppleFcmPlatformSettings;
+use Feugene\FirebaseNotificationsChannel\PlatformSettings\WebpushFcmPlatformSettings;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
 /**
  * Class FcmMessageTest.
  *
- * @covers \AvtoDev\FirebaseNotificationsChannel\FcmMessage
+ * @covers \Feugene\FirebaseNotificationsChannel\FcmMessage
  */
 class FcmMessageTest extends AbstractTestCase
 {

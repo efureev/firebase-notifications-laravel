@@ -1,10 +1,10 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests;
+namespace Feugene\FirebaseNotificationsChannel\Tests;
 
-use AvtoDev\FirebaseNotificationsChannel\FcmClient;
-use AvtoDev\FirebaseNotificationsChannel\FcmMessage;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmDeviceReceiver;
+use Feugene\FirebaseNotificationsChannel\FcmClient;
+use Feugene\FirebaseNotificationsChannel\FcmMessage;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmDeviceReceiver;
 use GuzzleHttp\Client;
 use GuzzleHttp\Psr7\Response;
 use SebastianBergmann\RecursionContext\InvalidArgumentException;
@@ -12,7 +12,7 @@ use SebastianBergmann\RecursionContext\InvalidArgumentException;
 /**
  * Class FcmClientTest.
  *
- * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\FcmClient
+ * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\FcmClient
  */
 class FcmClientTest extends AbstractTestCase
 {

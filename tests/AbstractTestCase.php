@@ -1,9 +1,9 @@
 <?php
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests;
+namespace Feugene\FirebaseNotificationsChannel\Tests;
 
 use AvtoDev\DevTools\Tests\PHPUnit\AbstractLaravelTestCase;
-use AvtoDev\FirebaseNotificationsChannel\FcmClient;
+use Feugene\FirebaseNotificationsChannel\FcmClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;

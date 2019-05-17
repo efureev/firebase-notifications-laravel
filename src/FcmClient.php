@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel;
+namespace Feugene\FirebaseNotificationsChannel;
 
-use AvtoDev\FirebaseNotificationsChannel\Exceptions\FirebaseRequestException;
-use AvtoDev\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
+use Feugene\FirebaseNotificationsChannel\Exceptions\FirebaseRequestException;
+use Feugene\FirebaseNotificationsChannel\Receivers\FcmNotificationReceiverInterface;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\Request;
+use Php\Support\Helpers\Json;
 use Psr\Http\Message\ResponseInterface;
-use Tarampampam\Wrappers\Json;
 
 /**
  * Class FcmClient
- * @package AvtoDev\FirebaseNotificationsChannel
+ * @package Feugene\FirebaseNotificationsChannel
  */
 class FcmClient
 {
@@ -48,20 +48,21 @@ class FcmClient
      *
      * @param FcmNotificationReceiverInterface $receiver
      * @param FcmMessage $message
+     *
      * @return ResponseInterface
      * @throws \GuzzleHttp\Exception\GuzzleException
-     * @throws \Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException
+     * @throws \Php\Support\Exceptions\JsonException
      */
     public function sendMessage(FcmNotificationReceiverInterface $receiver, FcmMessage $message): ResponseInterface
     {
         $message_payload = static::filterPayload(\array_merge($receiver->getTarget(), $message->toArray()));
-        $jsonMesg = Json::encode([
+        $jsonMsg = Json::encode([
             'message' => $message_payload,
         ]);
 
         $this->lastRequest = new Request('POST', $this->endpoint, [
-            'Content-Type' => 'application/json'
-        ], $jsonMesg);
+            'Content-Type' => 'application/json',
+        ], $jsonMsg);
 
         try {
             return $this->http_client->send($this->lastRequest);

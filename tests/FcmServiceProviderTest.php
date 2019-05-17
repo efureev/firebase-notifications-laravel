@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel\Tests;
+namespace Feugene\FirebaseNotificationsChannel\Tests;
 
-use AvtoDev\FirebaseNotificationsChannel\FcmChannel;
-use AvtoDev\FirebaseNotificationsChannel\FcmClient;
-use AvtoDev\FirebaseNotificationsChannel\FcmServiceProvider;
-use Tarampampam\Wrappers\Exceptions\JsonEncodeDecodeException;
-use Tarampampam\Wrappers\Json;
+use Feugene\FirebaseNotificationsChannel\FcmChannel;
+use Feugene\FirebaseNotificationsChannel\FcmClient;
+use Feugene\FirebaseNotificationsChannel\FcmServiceProvider;
+use Php\Support\Exceptions\JsonException;
+use Php\Support\Helpers\Json;
 
 /**
- * @coversDefaultClass \AvtoDev\FirebaseNotificationsChannel\FcmServiceProvider
+ * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\FcmServiceProvider
  */
 class FcmServiceProviderTest extends AbstractTestCase
 {
@@ -36,9 +36,8 @@ class FcmServiceProviderTest extends AbstractTestCase
     /**
      * @covers ::getCredentials()
      *
-     * @throws JsonEncodeDecodeException
+     * @throws \Php\Support\Exceptions\JsonException
      * @throws \ReflectionException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testGetCredentialsFromFile(): void
     {
@@ -70,7 +69,8 @@ class FcmServiceProviderTest extends AbstractTestCase
      */
     public function testGetCredentialsFromFileInvalidJson(): void
     {
-        $this->expectException(JsonEncodeDecodeException::class);
+        $this->expectException(JsonException::class);
+        $this->expectExceptionCode(JSON_ERROR_SYNTAX);
         $this->setUpConfigFile(__DIR__ . '/Stubs/invalid_firebase.json');
         self::callMethod($this->service_provider, 'getCredentials', [$this->app]);
     }

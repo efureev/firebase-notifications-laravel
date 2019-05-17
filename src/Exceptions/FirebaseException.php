@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace AvtoDev\FirebaseNotificationsChannel\Exceptions;
+namespace Feugene\FirebaseNotificationsChannel\Exceptions;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Psr\Http\Message\RequestInterface;
@@ -10,7 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class FirebaseException
- * @package AvtoDev\FirebaseNotificationsChannel\Exceptions
+ * @package Feugene\FirebaseNotificationsChannel\Exceptions
  */
 class FirebaseException extends \Exception implements Arrayable
 {
