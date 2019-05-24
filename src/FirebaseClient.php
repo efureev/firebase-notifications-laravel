@@ -136,6 +136,4 @@ class FirebaseClient
     {
         return $this->lastResponse;
     }
-
-
 }

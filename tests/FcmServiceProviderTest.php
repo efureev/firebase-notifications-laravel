@@ -38,7 +38,8 @@ class FcmServiceProviderTest extends AbstractTestCase
     /**
      * @covers ::getCredentials()
      *
-     * @throws \Php\Support\Exceptions\JsonException
+     * @throws JsonException
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
      */
     public function testGetCredentialsFromFile(): void
@@ -53,6 +54,7 @@ class FcmServiceProviderTest extends AbstractTestCase
     /**
      * @covers ::getCredentials()
      *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
      */
     public function testGetCredentialsFileNotFound(): void
@@ -67,6 +69,7 @@ class FcmServiceProviderTest extends AbstractTestCase
     /**
      * @covers ::getCredentials()
      *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
      */
     public function testGetCredentialsFromFileInvalidJson(): void
@@ -80,8 +83,8 @@ class FcmServiceProviderTest extends AbstractTestCase
     /**
      * @covers ::getCredentials()
      *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testGetCredentialsFromConfig(): void
     {
@@ -112,8 +115,8 @@ class FcmServiceProviderTest extends AbstractTestCase
     /**
      * @covers ::boot()
      *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
      * @throws \ReflectionException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      */
     public function testBoot(): void
     {
@@ -136,6 +139,11 @@ class FcmServiceProviderTest extends AbstractTestCase
         static::assertInstanceOf(Client::class, $firebase_client);
     }
 
+    /**
+     * @param null $path
+     *
+     * @throws \Illuminate\Contracts\Container\BindingResolutionException
+     */
     protected function setUpConfigFile($path = null): void
     {
         if ($path === null) {
