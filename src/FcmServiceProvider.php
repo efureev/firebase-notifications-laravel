@@ -40,7 +40,7 @@ class FcmServiceProvider extends ServiceProvider
             });
 
         $this->app
-            ->singleton('firebase', function (Application $app) {
+            ->singleton('firebase', static function (Application $app) {
                 $http_client = new Client([
                     'headers' => [
                         'Content-Type' => 'application/json',

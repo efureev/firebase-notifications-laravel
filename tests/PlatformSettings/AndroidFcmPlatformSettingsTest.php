@@ -4,6 +4,7 @@ namespace Feugene\FirebaseNotificationsChannel\Tests\PlatformSettings;
 
 use Feugene\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
 
 /**
  * @coversDefaultClass \Feugene\FirebaseNotificationsChannel\PlatformSettings\AndroidFcmPlatformSettings
@@ -42,5 +43,20 @@ class AndroidFcmPlatformSettingsTest extends AbstractPlatformSettingsTest
     protected function getPlatformSetting(): Arrayable
     {
         return new AndroidFcmPlatformSettings;
+    }
+
+    public function testHideNotification(): void
+    {
+        /** @var AndroidFcmPlatformSettings $platform_settings */
+        $platform_settings = $this->getPlatformSetting();
+
+        static::assertFalse($platform_settings->getHideNotification());
+
+        static::assertArrayHasKey('title', Arr::get($platform_settings->toArray(), 'notification'));
+
+        $platform_settings->setHideNotification(true);
+        static::assertTrue($platform_settings->getHideNotification());
+
+        static::assertNull(Arr::get($platform_settings->toArray(), 'notification'));
     }
 }

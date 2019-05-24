@@ -218,7 +218,7 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $title
      */
-    public function setTitle(string $title)
+    public function setTitle(string $title):void
     {
         $this->title = $title;
     }

@@ -53,7 +53,6 @@ class FcmMessageTest extends AbstractTestCase
      * @param $path
      *
      * @throws \ReflectionException
-     * @throws \SebastianBergmann\RecursionContext\InvalidArgumentException
      *
      * @dataProvider dataProvider
      */
@@ -83,9 +82,10 @@ class FcmMessageTest extends AbstractTestCase
     /**
      * @param $property
      * @param $value
+     *
      * @throws \ReflectionException
      */
-    public function datumLine($property, $value): void
+    private function datumLine($property, $value): void
     {
         $this->fcm_message->{'set' . Str::title($property)}($value);
 
@@ -94,7 +94,20 @@ class FcmMessageTest extends AbstractTestCase
         static::assertEquals([
             'key' => 'value',
             'obj.id' => '2',
-            'obj.value.test' => '1'
+            'obj.value.test' => '1',
         ], $this->fcm_message->toArray()['data']);
+    }
+
+    public function testHideNotification(): void
+    {
+        static::assertArrayHasKey('title', Arr::get($this->fcm_message->toArray(), 'notification'));
+        static::assertArrayHasKey('title', Arr::get($this->fcm_message->getAndroid()->toArray(), 'notification'));
+        $this->fcm_message->getAndroid()->setHideNotification(true);
+
+        static::assertNull(Arr::get($this->fcm_message->toArray(), 'notification'));
+
+        static::assertNull(Arr::get($this->fcm_message->getAndroid()->toArray(), 'notification'));
+        static::assertNull(Arr::get($this->fcm_message->getApns()->toArray(), 'payload.aps.alert.title', -1));
+        static::assertNull(Arr::get($this->fcm_message->getApns()->toArray(), 'payload.aps.alert.body', -1));
     }
 }

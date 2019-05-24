@@ -7,6 +7,8 @@ namespace Feugene\FirebaseNotificationsChannel\Tests;
 use Feugene\FirebaseNotificationsChannel\FcmChannel;
 use Feugene\FirebaseNotificationsChannel\FcmClient;
 use Feugene\FirebaseNotificationsChannel\FcmServiceProvider;
+use Feugene\FirebaseNotificationsChannel\FirebaseClient;
+use GuzzleHttp\Client;
 use Php\Support\Exceptions\JsonException;
 use Php\Support\Helpers\Json;
 
@@ -127,6 +129,11 @@ class FcmServiceProviderTest extends AbstractTestCase
             'https://fcm.googleapis.com/v1/projects/test/messages:send',
             self::getProperty($fcm_client, 'endpoint')
         );
+
+        /** @var FirebaseClient $firebase */
+        $firebase = $this->app->make('firebase');
+        $firebase_client = self::getProperty($firebase, 'http_client');
+        static::assertInstanceOf(Client::class, $firebase_client);
     }
 
     protected function setUpConfigFile($path = null): void
