@@ -231,6 +231,99 @@ class PushTopicSendCommand extends Command
 }
 ```
 
+Example Notification Message:
+```php
+<?php
+
+namespace App\Notifications;
+
+use Feugene\FirebaseNotificationsChannel\FcmChannel;
+use Feugene\FirebaseNotificationsChannel\FcmMessage;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Notifications\Notification;
+
+/**
+ * Class PushToDeviceMsg
+ * @package App\Notifications
+ */
+class PushToDeviceMsg extends Notification implements Arrayable
+{
+    /** @var string */
+    protected $title;
+
+    /** @var string */
+    protected $body;
+
+    /** @var array */
+    protected $data;
+
+    /** @var bool */
+    protected $mutableContent;
+
+    public function __construct(string $title, string $body, array $data = [], $mutableContent = true)
+    {
+        $this->title = $title;
+        $this->body = $body;
+        $this->data = $data;
+        $this->mutableContent = $mutableContent;
+    }
+
+    /**
+     * @return array
+     */
+    public function via(): array
+    {
+        return [FcmChannel::class];
+    }
+
+    /**
+     * @return FcmMessage
+     */
+    public function toFcm(): FcmMessage
+    {
+        $msg = (new FcmMessage)
+            ->setTitle($this->title)
+            ->setBody($this->body)
+            ->setData($this->data);
+
+        if ($this->mutableContent) {
+            $msg
+                ->getApns()
+                ->enableMutableContent();
+            $msg
+                ->getApns()
+                ->setCategory('ActionRichPush');
+
+            $msg
+                ->getApns()
+                ->setTitle($this->title);
+            $msg
+                ->getApns()
+                ->setBody($this->body);
+
+            $msg
+                ->getAndroid()
+                ->setHideNotification(true);
+        }
+
+        return $msg;
+
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'title' => $this->title,
+            'body' => $this->body,
+            'data' => $this->data,
+        ];
+    }
+}
+
+```
 ### Available Message methods
 
 This pakage supports all fields from [HTTP v1 FCM API][http_v1_fcm_api]. Message class contains setters for all the fields:

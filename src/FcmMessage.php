@@ -111,11 +111,11 @@ class FcmMessage implements Arrayable
      *
      * An object containing a list of key-value pairs
      *
-     * @example ['name'=>'wrench','mass'=>'1.3kg','count'=>3]
-     *
      * @param array $data
      *
      * @return self
+     * @example ['name'=>'wrench','mass'=>'1.3kg','count'=>3]
+     *
      */
     public function setData(array $data): self
     {
@@ -179,12 +179,15 @@ class FcmMessage implements Arrayable
      */
     public function toArray(): array
     {
-        return [
-            'data' => static::toMap($this->data ?? []),
-            'notification' => [
+        $notification = $this->android->getHideNotification()
+            ? null
+            : [
                 'title' => $this->title,
                 'body' => $this->body,
-            ],
+            ];
+        return [
+            'data' => static::toMap($this->data ?? []),
+            'notification' => $notification,
             'android' => $this->android->toArray(),
             'webpush' => $this->webpush->toArray(),
             'apns' => $this->apns->toArray(),
@@ -197,11 +200,12 @@ class FcmMessage implements Arrayable
      * @see https://firebase.google.com/docs/reference/fcm/rest/v1/projects.messages?authuser=0#androidconfig
      *
      * @param array $array
+     *
      * @return array
      */
     protected static function toMap(array $array): array
     {
-        return array_map(function ($i) {
+        return array_map(static function ($i) {
             switch (gettype($i)) {
                 case 'boolean':
                     return (string)(int)$i;

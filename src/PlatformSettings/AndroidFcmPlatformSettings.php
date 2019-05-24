@@ -154,6 +154,13 @@ class AndroidFcmPlatformSettings implements Arrayable
     protected $channel_id;
 
     /**
+     * Hide `notification` field for giving handeling push at App, not OS
+     *
+     * @var bool
+     */
+    protected $hide_notification = false;
+
+    /**
      * An identifier of a group of messages that can be collapsed,
      * so that only the last message gets sent when delivery can be resumed.
      * A maximum of 4 different collapse keys is allowed at any given time.
@@ -335,9 +342,25 @@ class AndroidFcmPlatformSettings implements Arrayable
      *
      * @param string $channel_id
      */
-    public function setChannelId(string $channel_id)
+    public function setChannelId(string $channel_id): void
     {
         $this->channel_id = $channel_id;
+    }
+
+    /**
+     * @param bool $hide_notification
+     */
+    public function setHideNotification(bool $hide_notification): void
+    {
+        $this->hide_notification = $hide_notification;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getHideNotification(): bool
+    {
+        return $this->hide_notification;
     }
 
     /**
@@ -347,13 +370,9 @@ class AndroidFcmPlatformSettings implements Arrayable
      */
     public function toArray(): array
     {
-        return [
-            'collapse_key' => $this->collapse_key,
-            'priority' => $this->priority,
-            'ttl' => $this->ttl,
-            'restricted_package_name' => $this->restricted_package_name,
-            'data' => $this->data,
-            'notification' => [
+        $notification = $this->hide_notification
+            ? null
+            : [
                 'title' => $this->title,
                 'body' => $this->body,
                 'icon' => $this->icon,
@@ -366,7 +385,15 @@ class AndroidFcmPlatformSettings implements Arrayable
                 'title_loc_key' => $this->title_loc_key,
                 'title_loc_args' => $this->title_loc_args,
                 'channel_id' => $this->channel_id,
-            ],
+            ];
+
+        return [
+            'collapse_key' => $this->collapse_key,
+            'priority' => $this->priority,
+            'ttl' => $this->ttl,
+            'restricted_package_name' => $this->restricted_package_name,
+            'data' => $this->data,
+            'notification' => $notification,
         ];
     }
 }
